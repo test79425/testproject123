@@ -6,15 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import tests.QueryGetter;
+import utility.QueryGetter;
 
 public class MainPage {
 
     private final WebDriver driver;
     @FindBy(css = "input[placeholder]")
     WebElement searchInput;
+
     @FindBy(xpath = "//div[@data-widget='searchResultsV2']/div")
-    WebElement itemsTable;
+    WebElement itemsTableOnSearchPage;
+
     By items = By.xpath("//div[text()=\"В корзину\"]/../..");
 
     public MainPage(WebDriver driver) {
@@ -28,8 +30,8 @@ public class MainPage {
         return this;
     }
 
-    public MainPage AddToCartItem(int i) {
-        addToCart(itemsTable.findElements(By.xpath("div")).get(i));
+    public MainPage addToCartItem(int i) {
+        addToCart(itemsTableOnSearchPage.findElements(By.xpath("div")).get(i));
         return this;
     }
 

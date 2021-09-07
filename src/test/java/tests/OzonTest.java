@@ -1,5 +1,6 @@
 package tests;
 
+import utility.QueryGetter;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -13,13 +14,12 @@ import pages.MainPage;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
-
 public class OzonTest {
 
     static WebDriver webDriver = null;
 
     @BeforeAll
-    static void setUp()  {
+    static void setUp() {
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
         webDriver.manage().window().maximize();
@@ -31,12 +31,12 @@ public class OzonTest {
     }
 
     @Test
-    public void simpleTest() {
+    public void checkItemAddAndRemoveFromCart() {
         webDriver.get((QueryGetter.getString("target.url")));
         String searchQ = new String(QueryGetter.getString("search.query")
                 .getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         MainPage mainPage = new MainPage(webDriver).findBySearch(searchQ);
-        mainPage.AddToCartItem(1);
+        mainPage.addToCartItem(1);
         CartPage cartPage = mainPage.goToCart();
         Assertions.assertEquals(1, cartPage.getCartSize());
         cartPage.removeAll();
