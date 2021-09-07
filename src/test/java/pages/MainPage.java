@@ -12,12 +12,12 @@ public class MainPage {
 
     private final WebDriver driver;
     @FindBy(css = "input[placeholder]")
-    WebElement searchInput;
+    private WebElement searchInput;
 
     @FindBy(xpath = "//div[@data-widget='searchResultsV2']/div")
-    WebElement itemsTableOnSearchPage;
+    private WebElement itemsTableOnSearchPage;
 
-    By items = By.xpath("//div[text()=\"В корзину\"]/../..");
+    private By items = By.xpath("//div[text()=\"В корзину\"]/../..");
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);

@@ -11,10 +11,10 @@ import java.time.Duration;
 
 public class CartPage {
     private final WebDriver driver;
-    By removeAllButton = By.cssSelector("div[data-widget=\"controls\"] > span");
-    By items = By.xpath("//span[contains(text(),'В избранное')]");
-    By confirmRemoveButton = By.xpath("//div[contains(text(),'Удалить')]/../..");
-    By emptyCartLabel = By.xpath("//h1[contains(text(),'пуста')]");
+    private By removeAllButton = By.cssSelector("div[data-widget=\"controls\"] > span");
+    private By items = By.xpath("//span[contains(text(),'В избранное')]");
+    private By confirmRemoveButton = By.xpath("//div[contains(text(),'Удалить')]/../..");
+    private By emptyCartLabel = By.xpath("//h1[contains(text(),'пуста')]");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
